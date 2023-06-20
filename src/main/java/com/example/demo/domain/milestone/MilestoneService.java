@@ -3,6 +3,7 @@ package com.example.demo.domain.milestone;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,4 +21,11 @@ public class MilestoneService {
         //         new MilestoneEntity(3, "3", "3")
         // );
     }
+
+    @Transactional 
+    public void create(String milestone, String description) {
+        milestoneRepository.insert(milestone, description);
+        // throw new IllegalStateException("Exception");
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.example.demo.domain.milestone;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -7,4 +9,7 @@ import org.apache.ibatis.annotations.Select;
 public interface MilestoneRepository {
     @Select("select * from milestones")
     List<MilestoneEntity> findAll();
+
+    @Insert("insert into milestones (milestone, description) values (#{milestone}, #{description})")
+    int insert(String milestone, String description);
 }
