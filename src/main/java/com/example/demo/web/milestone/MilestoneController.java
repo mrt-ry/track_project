@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MilestoneController {
 
-    private final MilestoneService milestoneService = new MilestoneService();
+    private final MilestoneService milestoneService;
 
     @GetMapping("/milestones")
     public String showList(Model model) {
