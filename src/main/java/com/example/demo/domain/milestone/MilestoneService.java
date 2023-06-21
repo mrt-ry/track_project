@@ -22,6 +22,10 @@ public class MilestoneService {
         // );
     }
 
+    public MilestoneEntity findData(long id) {
+        return milestoneRepository.findData(id); 
+    }
+
     
     public void create(String milestone, String description) {
         milestoneRepository.insert(milestone, description);
