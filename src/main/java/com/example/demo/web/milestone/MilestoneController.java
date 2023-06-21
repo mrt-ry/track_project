@@ -19,20 +19,23 @@ public class MilestoneController {
 
     private final MilestoneService milestoneService;
 
+    // milestonesリストの表示
     @GetMapping()
     public String showList(Model model) {
         model.addAttribute("milestoneList", milestoneService.findAll());
         return "milestones/list";
     }
     
+    // milestone作成フォームを表示
     @GetMapping("/creationForm") 
     public String showCreationForm(@ModelAttribute MilestoneForm form) {
         return "milestones/creationForm";
     }
 
-    @PostMapping // POSTリクエストのアノテーション
+    // POSTリクエスト
+    @PostMapping 
     public String create(MilestoneForm form, Model model) {
         milestoneService.create(form.getMilestone(), form.getDescription());
-        return showList(model);
+        return "redirect:/milestones";
     }
 }

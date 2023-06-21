@@ -25,7 +25,7 @@ public class MilestoneService {
     @Transactional 
     public void create(String milestone, String description) {
         milestoneRepository.insert(milestone, description);
-        // throw new IllegalStateException("Exception");
+        
     }
 
 }
