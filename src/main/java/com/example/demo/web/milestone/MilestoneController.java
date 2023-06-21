@@ -44,6 +44,7 @@ public class MilestoneController {
         return "redirect:/milestones";
     }
 
+    // 詳細ページ
     @GetMapping("/{id}")
     public String displayView(@PathVariable Long id, Model model) {
         model.addAttribute("milestone", milestoneService.findData(id));

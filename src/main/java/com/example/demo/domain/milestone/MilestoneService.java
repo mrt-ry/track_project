@@ -15,21 +15,14 @@ public class MilestoneService {
 
     public List<MilestoneEntity> findAll() {
         return milestoneRepository.findAll(); 
-        // return List.of(
-        //         new MilestoneEntity(1, "1", "1"),
-        //         new MilestoneEntity(2, "2", "2"),
-        //         new MilestoneEntity(3, "3", "3")
-        // );
     }
 
     public MilestoneEntity findData(long id) {
         return milestoneRepository.findData(id); 
     }
-
     
     public void create(String milestone, String description) {
         milestoneRepository.insert(milestone, description);
-        
     }
 
 }
