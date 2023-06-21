@@ -8,11 +8,13 @@
 <body>
     <h1>マイルストーンアプリケーション</h1>
     <a th:href="@{/milestones}">マイルストーンページ</a>
-    <form action="/milestones" method="post" th:object="${milestoneForm}">
+    <form action="#" th:action="@{/milestones}" method="post" th:object="${milestoneForm}">
         <label for="milestoneInput">マイルストーン</label>
         <input id="milestoneInput" type="text" th:field="*{milestone}"><br>
+        <p th:if="${#fields.hasErrors('milestone')}" th:errors="*{milestone}">(error)</p>
         <label for="descriptionInput">説明</label>
         <input id="descriptionInput" type="text" th:field="*{description}"><br>
+        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">(error)</p>
         <input type="submit" value="作成"></input>
     </form>
 </body>
