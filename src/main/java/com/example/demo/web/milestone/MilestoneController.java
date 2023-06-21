@@ -36,7 +36,7 @@ public class MilestoneController {
     // POSTリクエスト
     @PostMapping 
     @Transactional 
-    public String create(@Validated MilestoneForm milestoneForm, Model model, BindingResult bindingResult) {
+    public String create(@Validated MilestoneForm milestoneForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
             return showCreationForm(milestoneForm);
         }
