@@ -22,10 +22,14 @@ public class MilestoneService {
         // );
     }
 
-    @Transactional 
+    public MilestoneEntity findData(long id) {
+        return milestoneRepository.findData(id); 
+    }
+
+    
     public void create(String milestone, String description) {
         milestoneRepository.insert(milestone, description);
-        // throw new IllegalStateException("Exception");
+        
     }
 
 }
