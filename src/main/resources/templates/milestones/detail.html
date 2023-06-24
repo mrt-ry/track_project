@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>詳細ページ｜マイルストーンアプリケーション</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>マイルストーン</h1>
     <a th:href="@{/milestones}">戻る</a>
-    <h2 th:text="${milestone.milestone}"></h2>
-    <p th:text="${milestone.description}"></p>
-</body>
+    <h2>
+      <input
+        id="milestoneInput"
+        type="text"
+        th:field="*{milestone.milestone}"
+        disabled
+      />
+    </h2>
+
+    <div>
+      <p th:text="${milestone.status}" class="defaultStatus"></p>
+      <select
+        th:field="*{milestone.status}"
+        id="statusInput"
+        class="changeStatus"
+        hidden
+      >
+        <option value="初期">状態を選んでください</option>
+        <option value="未実行">未実行</option>
+        <option value="実行中">実行中</option>
+        <option value="実行済">実行済</option>
+      </select>
+    </div>
+
+    <div>
+      <p th:text="${milestone.priority}" class="defaultPriority"></p>
+      <select
+        th:field="*{milestone.priority}"
+        id="priorityInput"
+        class="changePriority"
+        hidden
+      >
+        <option disabled value="0">優先度を選んでください</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <input id="dateInput" type="text" th:field="${milestone.date}" disabled />
+    <input
+      id="categoryInput"
+      type="text"
+      th:field="*{milestone.category}"
+      disabled
+    />
+
+    <button id="editMilestone">編集</button>
+    <button id="saveMilestone">保存</button>
+    <a th:href="@{/milestones/delete/{id}(id=*{milestone.id})}">削除</a>
+    <script th:src="@{/js/edit.js}"></script>
+  </body>
 </html>

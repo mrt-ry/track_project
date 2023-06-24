@@ -40,7 +40,7 @@ public class MilestoneController {
         if (bindingResult.hasErrors()){
             return showCreationForm(milestoneForm);
         }
-        milestoneService.create(milestoneForm.getMilestone(), milestoneForm.getDescription());
+        milestoneService.create(milestoneForm.getMilestone(), milestoneForm.getStatus(),milestoneForm.getPriority(),milestoneForm.getDate(),milestoneForm.getCategory());
         return "redirect:/milestones";
     }
 
@@ -50,4 +50,23 @@ public class MilestoneController {
         model.addAttribute("milestone", milestoneService.findData(id));
         return "milestones/detail";
   }
+
+    // マイルストーンの削除
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id,Model model){
+        milestoneService.deleteById(id);
+        return "redirect:/milestones";
+    }
+
+    // マイルストーンの編集
+    // @PostMapping 
+    // @Transactional 
+    // public String update(@Validated MilestoneForm milestoneForm, BindingResult bindingResult) {
+    //     if (bindingResult.hasErrors()){
+    //         return showCreationForm(milestoneForm);
+    //     }
+    //     milestoneService.create(milestoneForm.getMilestone(), milestoneForm.getStatus(),milestoneForm.getPriority(),milestoneForm.getDate(),milestoneForm.getCategory());
+    //     return "redirect:/milestones";
+    // }
+
 }

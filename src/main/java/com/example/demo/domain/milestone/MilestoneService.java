@@ -1,9 +1,9 @@
 package com.example.demo.domain.milestone;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,8 +21,16 @@ public class MilestoneService {
         return milestoneRepository.findData(id); 
     }
     
-    public void create(String milestone, String description) {
-        milestoneRepository.insert(milestone, description);
+    public void create(String milestone, String status,int priority,Date date,String category) {
+        milestoneRepository.insert(milestone, status,priority,date,category);
     }
+
+     public void deleteById(long id) {
+        milestoneRepository.deleteById(id); 
+    }
+
+    // public void update(String milestone, String status,int priority,Date date,String category) {
+    //     milestoneRepository.update(milestone, status,priority,date,category);
+    // }
 
 }
