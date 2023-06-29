@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+​
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>トップページ｜プロジェクト選択</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/projectlist.css}">
+​
+</head>
+​
+<body>
+    <header> <!--ヘッダー作成-->
+        <div class="header">
+          <div class="header-left">
+            <a th:href="@{/user/2/{userName}(userName=*{#authentication.name})}">
+              <p>
+                <img th:src="@{${user.image}}" /><spna
+                  th:text="${#authentication.name}"></spna>
+              </p>
+            </a><!--ユーザー名と画像が入るようにしたい-->
+          </div>
+          <div class="header-right"> 
+            <form action="#" th:action="@{/logout}" method="post">
+              <p class="logoutbutton">
+                <input type="submit" class="btn btn-primary" value="Lot out" />
+              </p>
+            </form> <!--ログイン画面に戻るようにしたい-->
+          </div>
+        </div>  
+        <div class="head_png">
+          <img th:src="@{/image/head.png}">
+        </div>
+      </header>
+  
+    <h1>プロジェクト一覧</h1> <!--プロジェクト名として作成できるかは検討中-->
+    <!-- <div class="button_png"> -->
+      <!-- <img src="sort.png"> -->
+      <!-- <img th:src="@{/image/add.png}"> -->
+    <!-- </div> -->
+    
+    <table class="projecttable">
+      <thead>
+        <tr>
+          <th class="No">No.</th>
+          <th class="project">プロジェクト</th>
+          <th class="detail">参考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="project : ${projects}">
+          <td class="No" th:text="${project.id}">a</td>
+          <td class="milestone">
+            <a
+              th:text="${project.name}"
+              th:href="@{/milestones/project={project}(project=*{project.id})}"
+            >a</a>
+          </td>
+          <td class="detail" th:text="${project.detail}">a</td>
+        </tr>
+      </tbody>
+    </table>
+  <!-- <h1>プロジェクト一覧</h1>
+  <a th:href=>マイルストーンページ</a>
+  <a th:href="@{/user/{userName}(userName=*{#authentication.name})}">プロフィール</a>
+  <tbody>
+  <tr th:each="project : ${projects}">
+    <td th:text="${project.id}">a</td>
+    <td>
+      <a th:text="${project.name}" th:href="@{/milestones/project={project}(project=*{project.id})}">a</a>
+    </td>
+    </tr>
+  </tbody> -->
+</body>
+​
+</html>

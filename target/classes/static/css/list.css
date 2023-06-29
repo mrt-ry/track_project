@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap");
+body {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header-left {
+  float: left;
+  margin-left: 50px;
+}
+.header-left img {
+  margin-bottom: -20px;
+  height: 50px;
+  width: 50px;
+}
+.header-right {
+  display: flex;
+  margin-right: 50px;
+}
+.projectbutton {
+  border: solid;
+  border-radius: 25px;
+  text-align: center;
+  margin-right: 10px;
+}
+.projectbutton input {
+  background: transparent;
+  border: none;
+}
+.logoutbutton {
+  border: solid;
+  border-radius: 25px;
+  text-align: center;
+  width: 100px;
+}
+.head_png {
+  text-align: right;
+  margin-right: 50px;
+}
+.head_png img {
+  /* margin-top: -90px; */
+  height: 400px;
+  width: 400px;
+}
+h1 {
+  max-width: 1100px;
+  margin: -100px auto 0;
+  width: 100%;
+}
+.button_png {
+  text-align: right;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+.button_png img {
+  height: 50px;
+  width: 50px;
+  text-align: right;
+}
+table {
+  border-collapse: collapse;
+  margin: auto;
+}
+th {
+  background: #ffffff;
+}
+th,
+td {
+  border: 1px solid #000000;
+  padding: 8px;
+}
+.No {
+  width: 50px;
+}
+.milestone {
+  width: 500px;
+}
+.milestone a {
+  display: block;
+}
+.status,
+.priority,
+.date {
+  width: 80px;
+  text-align: center;
+}
+.category {
+  width: 200px;
+}
+tr {
+  background: #ffffff;
+}
+tr:hover {
+  background: #98d2ff;
+}
+
+h2 {
+  margin-left: 20%;
+}
+
+.projectimg {
+  height: 400px;
+  width: 400px;
+  text-align: left;
+  margin-right: 50px;
+}
+
+.statusData[data-status="未実行"] {
+  background-color: #D0CECE;
+}
+
+.statusData[data-status="実行中"] {
+  background-color: #C5E6FF;
+}
+
+.statusData[data-status="実行済"] {
+  background-color: #98D2FF;
+}
+
+.priorityData[data-priority="5"] {
+  background-color: #FFFF66;
+}
+
+.priorityData[data-priority="4"] {
+  background-color: #FFFFC1;
+}
+
+.priorityData[data-priority="3"] {
+  background-color: #FFFFC1;
+}
+
+.priorityData[data-priority="2"] {
+  background-color: #FFFFC1;
+}
+.priorityData[data-priority="1"] {
+  background-color: #ffffff;
+}

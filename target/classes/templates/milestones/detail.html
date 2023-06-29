@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+</html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>詳細ページ｜マイルストーンアプリケーション</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/detail.css}">
+  <script>
+    function showPopup() {
+      var result = confirm("このマイルストーンを削除しますか？");
+      if (result) {
+      // 「はい」が選択された場合はフォームを送信
+      document.getElementById("myForm").submit();
+    }
+    }
+  </script>
+</head>
+
+<body>
+  <header> <!--ヘッダー作成-->
+    <div class="header">
+      <div class="header-left">
+        <a th:href="@{/user/{userName}(userName=*{#authentication.name})}">
+          <p>
+            <img th:src="@{${user.image}}" /><spna
+              th:text="${#authentication.name}"></spna>
+          </p>
+        </a>
+      </div>
+      <div class="header-right">
+        <p class="milstonelist"><a th:href="@{/milestones/project={id}(id=*{project})}">マイルストーン一覧</a></p> 
+        <form action="#" th:action="@{/logout}" method="post">
+          <p class="logoutbutton">
+            <input type="submit" class="btn btn-primary" value="Lot out" />
+          </p>
+        </form>
+      </div>
+    </div>  
+  </header>
+
+  <h1>マイルストーン削除・編集</h1>
+  <!-- <a th:href="@{/milestones}">戻る</a> -->
+  <div class="button_png">
+    <a id="editMilestone"><img th:src="@{/image/edit.png}"></a> <!--編集ボタンとして機能してほしい-->
+    <form id="myForm" class="myForm" th:action="@{/milestones/delete/{id}(id=${id})}" method="get">
+    <button type="button" onclick="showPopup()" class="deleteButton"><img  th:src="@{/image/delete.png}"></button>
+    </form><!--削除ボタンとして機能してほしい-->
+  </div>
+
+  <form th:action="@{/milestones/update/{id}(id=${id})}" method="post" th:object="${milestoneForm}">
+    <table class="milestonetable_edit">
+      <thead>
+        <tr>
+          <th class="milestone">マイルストーン</th>
+          <th class="status">進捗</th>
+          <th class="priority">優先度</th>
+          <th class="date">日付</th>
+          <th class="category">カテゴリ</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td class="milestone">
+            <input id="milestoneInput" type="text" th:field="${milestone.milestone}" disabled />
+          </td>
+          <td class="status">
+              <p th:text="${milestone.status}" class="defaultStatus"></p>
+              <select th:field="${milestone.status}" id="statusInput" class="changeStatus" hidden>
+                <option disabled value="初期">状態を選んでください</option>
+                <option value="未実行">未実行</option>
+                <option value="実行中">実行中</option>
+                <option value="実行済">実行済</option>
+              </select>
+          </td>
+          <td class="priority">
+            <p th:text="${milestone.priority}" class="defaultPriority"></p>
+            <select th:field="${milestone.priority}" id="priorityInput" class="changePriority" hidden>
+              <option disabled value="0">優先度を選んでください</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </td>
+          <td class="date">
+            <input id="dateInput" class="dateInput" type="text" th:field="${milestone.date}" disabled />
+          </td>
+          <td class="category">
+            <input id="categoryInput" type="text" th:field="${milestone.category}" disabled />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="changebutton" id="changebutton" hidden>
+      <input id="saveMilestone" type="submit" value="保存" class="save"> 
+      <!-- <input type="reset" value="キャンセル" class="cansel"> -->
+      <a id="editCancelButton" class="cansel">キャンセル</a>
+    </div>
+  </form>  
+
+  
+   
+ 
+
+ <!--編集の際の動きだと思うのですが、適切な位置に移動しておいてもらえると助かります
+  (編集ボタンはテーブルの上に位置してます)-->   
+  <script th:src="@{/js/edit.js}"></script> 
+    
+  
+  
+</body>
+
+</html>

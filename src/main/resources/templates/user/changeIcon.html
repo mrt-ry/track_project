@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>アイコンを選んで下さい</h1>
+    <form
+      th:action="@{/user/{userName}(userName=*{#authentication.name})}"
+      method="post" enctype="multipart/form-data">
+      
+        <input type="file" name="file" />
+        <button type="submit">アップロード</button>
+    
+    </form>
+  </body>
+</html>

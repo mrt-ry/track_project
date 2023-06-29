@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>一覧ページ｜マイルストーンアプリケーション</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/list.css}" />
+    <script th:src="@{/js/category.js}"></script>
+
+  </head>
+  <body>
+    <!-- <h1>マイルストーン</h1>
+    <a th:href="@{/}">トップページ</a>
+    <a th:href="@{/milestones/creationForm}">作成</a> -->
+    ​
+    <header>
+      <!--ヘッダー作成-->
+      <div class="header">
+        <div class="header-left">
+          <a th:href="@{/user/{userName}(userName=*{#authentication.name})}">
+            <p>
+              <img th:src="@{${user.image}}" /><spna
+                th:text="${#authentication.name}"></spna>
+            </p>
+          </a>
+          <!--ユーザー名と画像が入るようにしたい-->
+        </div>
+        <div class="header-right">
+          <form action="#" th:action="@{/}" method="get">
+            <!--プロジェクト一覧に戻りたい-->
+            <p class="projectbutton">
+              <input
+                type="submit"
+                class="btn btn-primary"
+                value="プロジェクト一覧" />
+            </p>
+          </form>
+          <form action="#" th:action="@{/logout}" method="post">
+            <p class="logoutbutton">
+              <input type="submit" class="btn btn-primary" value="Lot out" />
+            </p>
+          </form>
+        </div>
+      </div>
+      
+      <div class="head_png">
+        <img class="projectimg" th:src="@{${projectimg}}" />
+        <img th:src="@{/image/head.png}" />
+        
+      </div>
+    </header>
+    ​
+    <h1><span th:text="${projectName}"></span></h1>
+    <h2><span th:text="${projectdetail}"></span></h2>
+    <!--プロジェクト名として作成できるかは検討中-->
+    <div class="button_png">
+      <!-- <form th:action="@{/milestones/sort}" method="get">
+        <button type="submit"><img th:src="@{/image/sort.png}" /></button>
+      </form> -->
+      <a th:href="@{/milestones/creationForm}">
+        <img th:src="@{/image/add.png}" />
+      </a>
+    </div>
+    ​
+
+    <table class="milestonetable">
+      <thead>
+        <tr>
+          <th class="milestone">マイルストーン</th>
+          <th class="status">進捗
+            <select id="statusSelect" onchange="updateStatus()">
+              <option value="">すべてを表示</option>
+              <option th:each="Status :${proStatus}" th:value="${Status}" th:text="${Status}"></option>
+            </select>
+          </th>
+          <th class="priority">
+            優先度
+            <div>
+              <a th:href="@{/milestones?sortdata=priority&sorttype=asc}"
+            ><img style="width: 30px" th:src="@{/image/sortasc.png}"
+            /></a>
+            <a th:href="@{/milestones?sortdata=priority&sorttype=desc}"
+              ><img style="width: 30px" th:src="@{/image/sortdesc.png}"
+              /></a
+            >
+            </div>
+          </th>
+          <th class="date">
+            日付
+            <div>
+              <a th:href="@{/milestones?sortdata=date&sorttype=asc}">
+                <img style="width: 30px" th:src="@{/image/sortasc.png}"
+              /></a>
+              <a th:href="@{/milestones?sortdata=date&sorttype=desc}"><img style="width: 30px" th:src="@{/image/sortdesc.png}"
+                /></a>
+            </div>
+          </th>
+          <th class="category">カテゴリ
+            <select id="categorySelect" onchange="updateContent()">
+              <option value="">すべてを表示</option>
+              <option th:each="category :${proCategory}" th:value="${category}" th:text="${category}"></option>
+            </select>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="milestone : ${milestoneList}" class="milestoneRow">
+          <td class="milestone">
+            <a
+              th:text="${milestone.milestone}"
+              th:href="@{/milestones/{id}(id=*{milestone.id})}"
+              ></a
+            >
+          </td>
+          <td class="status statusData" th:text="${milestone.status}" th:attr="data-status=${milestone.status}"></td>
+          <td class="priority priorityData" th:text="${milestone.priority}" th:attr="data-priority=${milestone.priority}"></td>
+          <td class="date" th:text="${milestone.date}" ></td>
+          <td class="category categoryData" th:text="${milestone.category}" th:attr="data-category=${milestone.category}" ></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <a href="../index.html" th:href="@{/}">トップページ</a>
+    <a th:href="@{/logout}">ログアウト</a> -->
+    
+  </body>
+</html>

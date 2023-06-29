@@ -1,0 +1,3 @@
+$(function(){
+    $('.milestonetable').tablesorter(); 
+});

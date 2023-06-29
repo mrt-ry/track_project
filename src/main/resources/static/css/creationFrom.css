@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap");
+body {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header-left {
+  float: left;
+  margin-left: 50px;
+}
+.header-left img {
+  margin-bottom: -20px;
+  height: 50px;
+  width: 50px;
+}
+.header-right {
+  display: flex;
+  margin-right: 50px;
+  align-items: flex-start;
+}
+.milstonelist {
+  border: solid;
+  border-radius: 25px;
+  text-align: center;
+  width: 200px;
+  margin-right: 30px;
+}
+.logoutbutton {
+  border: solid;
+  border-radius: 25px;
+  text-align: center;
+  width: 100px;
+}
+
+.content {
+  width: 100%;
+  display: block;
+  justify-content: space-between;
+}
+
+h1 {
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.createContents {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+form {
+  /* float: left; */
+  /* margin-left: 100px; */
+}
+
+table {
+  border-spacing: 10px 10px;
+}
+td {
+  padding: 10px 20px;
+}
+
+.meeting_png {
+  margin-top: -100px;
+  margin-right: 50px;
+}
+.meeting_png img {
+  height: 400px;
+}
+
+.createbutton {
+  /* float: right; */
+  margin: 50px;
+}
+.create {
+  background-color: #98d2ff;
+  font-size: 20px;
+  margin-right: 30px;
+  border: none;
+}
+.cancel {
+  background-color: #98d2ff;
+  font-size: 20px;
+  border: none;
+  transform: translate(150px, -80px);
+}
+
+
+
+/* a {
+    text-decoration: none;
+    display: inline-block;
+    color: #0000ee;
+}
+
+.logoutbutton input[type="submit"] {
+    background: transparent;
+    border: none;
+    color: #000000;
+    font-size: 16px;
+} */

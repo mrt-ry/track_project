@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+​<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロフィール変更</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+
+​<body>
+    <header> <!--ヘッダー作成-->
+        <div class="header">
+          <div class="header-left">
+            <a th:href="@{/user/2/{userName}(userName=*{#authentication.name})}">
+              <p>
+                <img th:src="@{${user.image}}" /><spna
+                  th:text="${#authentication.name}"></spna>
+              </p>
+            </a> <!--ユーザー名と画像が入るようにしたい-->
+          </div>
+          <div class="header-right">
+            <!-- <p class="milstonelist"><a th:href="@{/milestones}">プロジェクト一覧</a></p>  -->
+            <form action="#" th:action="@{/}" method="get">
+              <!--プロジェクト一覧に戻りたい-->
+              <p class="projectbutton">
+                <input
+                  type="submit"
+                  class="btn btn-primary"
+                  value="プロジェクト一覧" />
+              </p>
+            </form>
+            <form action="#" th:action="@{/logout}" method="post">
+              <p class="logoutbutton">
+                <input type="submit" class="btn btn-primary" value="Lot out" />
+              </p>
+            </form> <!--ログイン画面に戻るようにしたい-->
+          </div>
+        </div>  
+      </header>
+
+      <div class="content">
+        <img id="profile_img" th:src="@{${user.image}}"></img><!--デフォルトで画像表示させたいかもです-->
+        <form
+        th:action="@{/user/2/{userName}(userName=*{#authentication.name})}"
+        method="post" enctype="multipart/form-data" id="editUserImageForm" hidden>
+        
+          <input type="file" name="file" />
+          <button type="submit">アップロード</button>
+        </form>
+        <button id="editCancelButton" class="cansel editCancelButton" hidden>キャンセル</button>  
+        <p id="AccountName" class="accountName" th:text="${#authentication.name}"></p><!--デフォルトでアカウント名表示させたかったです-->
+        <!-- <a th:href="@{/user/changeIcon}"><img th:src="@{/image/haguruma.png}"></a> -->
+        <a id="changeUserImage"><img th:src="@{/image/haguruma.png}"></a>
+      </div>
+
+    <!-- <h1>ようこそ</h1>
+    <h1 th:text="'こんにちは ' + ${#authentication.name} + ' さん'"></h1>
+    <p><img th:src="@{${user.image}}"></img></p>
+    <a th:href="@{/user/reName}">ユーザー名変更</a>
+    <a th:href="@{/user/changeIcon}">アイコン変更</a>
+    <a th:href="@{/milestones}">マイルストーン一覧</a> -->
+    <script th:src="@{/js/editUser.js}"></script>
+</body>
+​
+</html>

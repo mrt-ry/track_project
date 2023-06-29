@@ -1,0 +1,24 @@
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: #000000;
+    cursor: pointer;
+}
+
+.logoutbutton input[type="submit"] {
+    background: transparent;
+    border: none;
+    /* color: #000000; */
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #fff;
+        background: #282828;
+    }
+}
